@@ -30,7 +30,7 @@ public class DAOserviceimpl implements DAOservice{
 			pstate.setString(1,email);
 			pstate.setString(2,password);
 			ResultSet rs = pstate.executeQuery();
-			if(rs.next()==true) {
+			if(rs.next()) {
 				result = true;
 			}
 		} catch (SQLException e) {
