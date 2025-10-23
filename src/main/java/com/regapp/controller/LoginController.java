@@ -1,6 +1,8 @@
 package com.regapp.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +31,15 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("pass");
 		DAOservice service = new DAOserviceimpl();
 		service.connectDB();
-		boolean result = service.verifyLogin(email,password);
-		if(result) {
-			System.out.println("user exist");
+		boolean status = service.verifyLogin(email,password);
+		if(status) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/Create_registration.jsp");
+			rd.forward(request, response);
 		}
 		else {
-			System.out.println("imposter");			
+			request.setAttribute("error", "invalid username/password");
+			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+			rd.forward(request, response);
 		}
 	}
 

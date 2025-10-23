@@ -31,7 +31,6 @@ public class SaveLoginController extends HttpServlet {
 		DAOservice service = new DAOserviceimpl();
 		service.connectDB();
 		service.saveRegistration(email,password);
-	
 	}
 
 }

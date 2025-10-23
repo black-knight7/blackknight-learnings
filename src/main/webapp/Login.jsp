@@ -13,16 +13,10 @@
 		Password<input type="password" name="pass">
 		<input type="submit" value="login">
 	</form>
-<h2>Save Login Here..</h2>
-	<form action="saveLogin" method="post">
-		Email<input type="text" name="email">
-		Password<input type="password" name="pass">
-		<input type="submit" value="save">
-	</form>
-<h2>Delete Login Here..</h2>
-    <form action="deleteLogin" method="post">
-		Email<input type="text" name="email">
-		<input type="submit" value="delete">
-	</form>
+	<%
+	if(request.getAttribute("error")!=null){
+		  out.println(request.getAttribute("error"));
+	}
+	%>
 </body>
 </html> 
